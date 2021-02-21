@@ -4,7 +4,7 @@
  * @Author: CafuChino
  * @Date: 2021-02-20 13:50:35
  * @LastEditors: CafuChino
- * @LastEditTime: 2021-02-21 17:12:24
+ * @LastEditTime: 2021-02-21 17:28:09
  */
 module.exports = {
   lang:'zh-CN',
@@ -14,7 +14,7 @@ module.exports = {
   themeConfig: {
     sidebar:'auto',
     logo: 'https://i.loli.net/2021/02/20/v1oxqBQwtM2YKiC.png',
-    repo: 'vuejs/vuepress',
+    repo: 'CafuChino/plop-cn-doc',
     navbar: [
       // NavbarItem
       {
@@ -30,8 +30,6 @@ module.exports = {
         text: '进阶',
         link:'/further.md'
       },
-      // 字符串 - 页面文件路径
-      '/bar/README.md',
     ],
   }
 }
