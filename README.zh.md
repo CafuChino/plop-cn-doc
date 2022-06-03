@@ -322,83 +322,45 @@ export default function (plop) {
 
 下列参数是plop内部需要使用的基本参数，其他参数的需求取决于action的*类型*，关于这部分可以查看[内置actions](#built-in-actions)。
 
-参数 | 类型 | 默认值 | 描述
+| 参数            | 类型                | 默认值  | 描述                                                         |
+| --------------- | ------------------- | ------- | ------------------------------------------------------------ |
+| **type**        | *String*            |         | action的类型 ([`add`](#add), [`modify`](#modify), [`addMany`](#addmany), [等等](#setactiontype)) |
+| **force**       | *Boolean*           | `false` | 强制执行[forcefully](#running-a-generator-forcefully) (在不同action下有不同表现) |
+| **data**        | *Object / Function* | `{}`    | 指定需要与用户输入参数进行合并的数据                         |
+| **abortOnFail** | *Boolean*           | `true`  | 如果本操作因任何原因失败则取消后续操作                       |
+| **skip**        | *Function*          |         | 可选项，标记这个action是否会被执行                           |
 
--------- | ---- | ------- | -----------
+> `ActionConfig`的`data`属性也可以为一个返回对象的函数或者一个返回`resolve`内容为函数的`Promise`。
 
-**type** | *String* | | action的类型 ([`add`](#add), [`modify`](#modify), [`addMany`](#addmany), [等等](#setactiontype))
+> `ActionConfig`的`skip`属性方法是可选项，其应该返回一个字符串，内容是逃过action执行的原因。
 
-**force** | *Boolean* | `false` | 强制执行[forcefully](#running-a-generator-forcefully) (在不同action下有不同表现)
-
-**data** | *Object / Function* | `{}` | 指定需要与用户输入参数进行合并的数据
-
-**abortOnFail** | *Boolean* | `true` | 如果本操作因任何原因失败则取消后续操作
-
-**skip** | *Function* | | 可选项，标记这个action是否会被执行
-
-::: tip
-
-`ActionConfig`的`data`属性也可以为一个返回对象的函数或者一个返回`resolve`内容为函数的`Promise`。
-
-:::
-
-::: tip
-
-`ActionConfig`的`skip`属性方法是可选项，其应该返回一个字符串，内容是逃过action执行的原因。
-
-:::
-
-::: tip
-
-`Action`除了可以使用对象写法，也可以使用[函数写法](/api/builtInActions.html#自定义action方法)
-
-:::
+> `Action`除了可以使用对象写法，也可以使用[函数写法](#自定义action方法)
 
 ## 其他方法
 
-方法 | 参数 | 返回 | 描述
-
------- | ---------- | ------- | -----------
-
-**getHelper** | *String* | *Function* | 获取helper函数
-
-**getHelperList** | | *Array[String]* | 获取helper函数名称列表
-
-**getPartial** | *String* | *String* | 通过名称获取handlebars partial
-
-**getPartialList** | | *Array[String]* | 获取partial名称列表
-
-**getActionType** | *String* | *[CustomAction](#函数定义-自定义action)* | 通过名称获取action 类型
-
-**getActionTypeList** | | *Array[String]* | 获取actionType名称列表
-
-**setWelcomeMessage** | *String* | | 自定义运行`plop`时提示选择generator的提示标语
-
-**getGenerator** | *String* | *[GeneratorConfig](#interface-generatorconfig)* | 根据名称获取[GeneratorConfig](#interface-generatorconfig)
-
-**getGeneratorList** | | *Array[Object]* | 获取generator名称和描述的列表
-
-**setPlopfilePath** | *String* | |更改内部用于定位资源和模板文件的`plopfilePath`值
-
-**getPlopfilePath** | | *String* | 返回plopfile的绝对路径
-
-**getDestBasePath** | | *String* | 获取创建文件的基准路径
-
-**setDefaultInclude** | *Object* | *Object* | 设置当被其他文件使用 `plop.load()`载入时的默认设置
-
-**getDefaultInclude** | *String* | *Object* | 获取当被其他文件使用 `plop.load()`载入时的默认设置
-
-**renderString** | *String, Object* | *String* |使用handlebars渲染第一个参数(*String*)的模板，第二个参数(*Object*)作为渲染模板的数据
-
-
+| 方法                  | 参数             | 返回                                            | 描述                                                         |
+| --------------------- | ---------------- | ----------------------------------------------- | ------------------------------------------------------------ |
+| **getHelper**         | *String*         | *Function*                                      | 获取helper函数                                               |
+| **getHelperList**     |                  | *Array[String]*                                 | 获取helper函数名称列表                                       |
+| **getPartial**        | *String*         | *String*                                        | 通过名称获取handlebars partial                               |
+| **getPartialList**    |                  | *Array[String]*                                 | 获取partial名称列表                                          |
+| **getActionType**     | *String*         | *[CustomAction](#函数定义-自定义action)*        | 通过名称获取action 类型                                      |
+| **getActionTypeList** |                  | *Array[String]*                                 | 获取actionType名称列表                                       |
+| **setWelcomeMessage** | *String*         |                                                 | 自定义运行`plop`时提示选择generator的提示标语                |
+| **getGenerator**      | *String*         | *[GeneratorConfig](#interface-generatorconfig)* | 根据名称获取[GeneratorConfig](#interface-generatorconfig)    |
+| **getGeneratorList**  |                  | *Array[Object]*                                 | 获取generator名称和描述的列表                                |
+| **setPlopfilePath**   | *String*         |                                                 | 更改内部用于定位资源和模板文件的`plopfilePath`值             |
+| **getPlopfilePath**   |                  | *String*                                        | 返回plopfile的绝对路径                                       |
+| **getDestBasePath**   |                  | *String*                                        | 获取创建文件的基准路径                                       |
+| **setDefaultInclude** | *Object*         | *Object*                                        | 设置当被其他文件使用 `plop.load()`载入时的默认设置           |
+| **getDefaultInclude** | *String*         | *Object*                                        | 获取当被其他文件使用 `plop.load()`载入时的默认设置           |
+| **renderString**      | *String, Object* | *String*                                        | 使用handlebars渲染第一个参数(*String*)的模板，第二个参数(*Object*)作为渲染模板的数据 |
 
 # 内置actions
 
 你可以在[GeneratorConfig](/api/plopfile.html#接口-generatorconfig)中通过设置action的`type`属性以及模板名称(路径均为plopfile的相对路径)来使用内置的action。
 
-::: tip
-`Add`, `AddMany`和`Modify`actions有一个可选方法`transform`，它可以在模板渲染结果被写入文件之前对结果做出修改。`transform`方法接受字符串类型的文件内容或许安然结果作为参数，同时必须返回一个字符串或者字符串Promise。
-:::
+>`Add`, `AddMany`和`Modify`actions有一个可选方法`transform`，它可以在模板渲染结果被写入文件之前对结果做出修改。`transform`方法接受字符串类型的文件内容或许安然结果作为参数，同时必须返回一个字符串或者字符串Promise。
 
 ## Add
 正如其字面意思，`add`action会想你的项目中添加一个问题件。Path参数将会被传入handlebars作为渲染的目标文件名字。文件内容则取决于`template`或 `templateFile` 属性。
@@ -463,9 +425,7 @@ export default function (plop) {
 **data** | *Object* | `{}` | *继承自 [ActionConfig](/api/plopfile.html#接口-actionconfig)*
 **abortOnFail** | *Boolean* | `true` | *继承自 [ActionConfig](/api/plopfile.html#接口-actionconfig)*
 
-::: warning
-此处文档翻译有待推敲，欢迎提出pr进行修正和补充
-:::
+>此处文档翻译有待推敲，欢迎提出pr进行修正和补充
 
 ## 自定义Action方法
 `Add`和`Modify`几乎可以完成plop设计的所有功能，不过plop也提供了更加进阶的自定义action方法。在actions数组中填入自定义的action函数即可使用这一功能。
