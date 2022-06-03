@@ -238,7 +238,7 @@ export default function (plop) {
 
 ## setActionType
 
-`setActionType`允许你创建自定义`actions` (类似 `add` 或 `modify`) 完善你的plopfile。这些方法通常都是高度可复用的的 [自定义函数](/api/builtInActions.html#自定义action方法)。
+`setActionType`允许你创建自定义`actions` (类似 `add` 或 `modify`) 完善你的plopfile。这些方法通常都是高度可复用的的 [自定义函数](#自定义action方法)。
 
 ### *函数定义* 自定义Action
 
@@ -358,7 +358,7 @@ export default function (plop) {
 
 # 内置actions
 
-你可以在[GeneratorConfig](/api/plopfile.html#接口-generatorconfig)中通过设置action的`type`属性以及模板名称(路径均为plopfile的相对路径)来使用内置的action。
+你可以在[GeneratorConfig](#接口-generatorconfig)中通过设置action的`type`属性以及模板名称(路径均为plopfile的相对路径)来使用内置的action。
 
 >`Add`, `AddMany`和`Modify`actions有一个可选方法`transform`，它可以在模板渲染结果被写入文件之前对结果做出修改。`transform`方法接受字符串类型的文件内容或许安然结果作为参数，同时必须返回一个字符串或者字符串Promise。
 
@@ -372,10 +372,10 @@ export default function (plop) {
 **templateFile** | *String* | | 使用的模板路径
 **skipIfExists** | *Boolean* | `false` | 当文件已经存在的时候直接跳过（而不是失败）
 **transform** | *Function* | | [可选方法](#内置actions)，可以在内容被写入文件之前做出修改
-**skip** | *Function* | | *继承自 [ActionConfig](/api/plopfile.html#接口-actionconfig)*
-**force** | *Boolean* | `false` | *继承自 [ActionConfig](/api/plopfile.html#接口-actionconfig)* (如果文件存在将直接覆盖)
-**data** | *Object* | `{}` | *继承自 [ActionConfig](/api/plopfile.html#接口-actionconfig)*
-**abortOnFail** | *Boolean* | `true` | *继承自 [ActionConfig](/api/plopfile.html#接口-actionconfig)*
+**skip** | *Function* | | *继承自 [ActionConfig](#接口-actionconfig)*
+**force** | *Boolean* | `false` | *继承自 [ActionConfig](#接口-actionconfig)* (如果文件存在将直接覆盖)
+**data** | *Object* | `{}` | *继承自 [ActionConfig](#接口-actionconfig)*
+**abortOnFail** | *Boolean* | `true` | *继承自 [ActionConfig](#接口-actionconfig)*
 
 ## AddMany
 
@@ -390,11 +390,11 @@ export default function (plop) {
 **globOptions** | *[Object](https://github.com/sindresorhus/globby#options)* | | 改变模板文件匹配方法的glob选项
 **verbose** | *Boolean* | `true` | 输出成功添加的文件路径
 **transform** | *Function* | | [可选方法](#内置actions)，可以在内容被写入文件之前做出修改
-**skip** | *Function* | | *继承自 [ActionConfig](/api/plopfile.html#接口-actionconfig)*
+**skip** | *Function* | | *继承自 [ActionConfig](#接口-actionconfig)*
 **skipIfExists** | *Boolean* | `false` | *继承自[Add](#add)* 当文件已经存在的时候直接跳过（而不是失败）
-**force** | *Boolean* | `false` | *继承自 [ActionConfig](/api/plopfile.html#接口-actionconfig)* (如果文件存在将直接覆盖)
-**data** | *Object* | `{}` | *继承自 [ActionConfig](/api/plopfile.html#接口-actionconfig)*
-**abortOnFail** | *Boolean* | `true` | *继承自 [ActionConfig](/api/plopfile.html#接口-actionconfig)*
+**force** | *Boolean* | `false` | *继承自 [ActionConfig](#接口-actionconfig)* (如果文件存在将直接覆盖)
+**data** | *Object* | `{}` | *继承自 [ActionConfig](#接口-actionconfig)*
+**abortOnFail** | *Boolean* | `true` | *继承自 [ActionConfig](#接口-actionconfig)*
 
 ## Modify
 
@@ -407,9 +407,9 @@ export default function (plop) {
 **template** | *String* | | 模板中需要被匹配替换的内容，可以使用$1, $2等等作为占位符
 **templateFile** | *String* | | 包含`template`的文件路径
 **transform** | *Function* | | [可选方法](#内置actions)，可以在内容被写入文件之前做出修改
-**skip** | *Function* | | *继承自 [ActionConfig](/api/plopfile.html#接口-actionconfig)*
-**data** | *Object* | `{}` | *继承自 [ActionConfig](/api/plopfile.html#接口-actionconfig)*
-**abortOnFail** | *Boolean* | `true` | *继承自 [ActionConfig](/api/plopfile.html#接口-actionconfig)*
+**skip** | *Function* | | *继承自 [ActionConfig](#接口-actionconfig)*
+**data** | *Object* | `{}` | *继承自 [ActionConfig](#接口-actionconfig)*
+**abortOnFail** | *Boolean* | `true` | *继承自 [ActionConfig](#接口-actionconfig)*
 
 ## Append
 `append` action 是更常用的`modify`的子集。 他可以在文件的特定位置插入内容。
@@ -422,14 +422,14 @@ export default function (plop) {
 **separator** | *String* | `new line` | 分隔条目的值
 **template** | *String* | | 需要被修改的文件渲染时使用的handlebars模板
 **templateFile** | *String* | | 包含`template`的文件路径
-**data** | *Object* | `{}` | *继承自 [ActionConfig](/api/plopfile.html#接口-actionconfig)*
-**abortOnFail** | *Boolean* | `true` | *继承自 [ActionConfig](/api/plopfile.html#接口-actionconfig)*
+**data** | *Object* | `{}` | *继承自 [ActionConfig](#接口-actionconfig)*
+**abortOnFail** | *Boolean* | `true` | *继承自 [ActionConfig](#接口-actionconfig)*
 
 >此处文档翻译有待推敲，欢迎提出pr进行修正和补充
 
 ## 自定义Action方法
 `Add`和`Modify`几乎可以完成plop设计的所有功能，不过plop也提供了更加进阶的自定义action方法。在actions数组中填入自定义的action函数即可使用这一功能。
-- 自行以action在执行时与官方action使用相同的[函数接口](/api/plopfile.html#函数定义-自定义action)
+- 自行以action在执行时与官方action使用相同的[函数接口](#函数定义-自定义action)
 - Plop会等待自定义action方法执行完毕后才会继续执行下一个action
 - 函数必须返回一个Plop可以理解的确切值，如果返回了一个`promise`，那么在这个promise完成之前plop不会进行任何操作。如果函数返回了一个字符串类型的消息(*String*), plop便可得知action已经成功执行，并将此信息输出到action的状态提示信息上。
 - 当返回的promise被reject，会程序抛出了一个异常，plop会视为action执行失败
@@ -464,7 +464,7 @@ _你也可以查看官方提供的 [同步自定义action案例](https://github.
 以下是一些常见的进阶用法
 
 ## 使用动态构建的actions数组
-[GeneratorConfig](/api/plopfile.html#接口-generatorconfig)的`actions`属性可以是一个函数，他接受answers作为传入参数并且返回actions数组，这使你可以根据输入的答案动态调整actions数组
+[GeneratorConfig](#接口-generatorconfig)的`actions`属性可以是一个函数，他接受answers作为传入参数并且返回actions数组，这使你可以根据输入的答案动态调整actions数组
 
 ``` javascript
 module.exports = function (plop) {
